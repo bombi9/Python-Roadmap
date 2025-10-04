@@ -1,5 +1,6 @@
+from cProfile import label
 import numpy as np
-from numpy.random import f
+import matplotlib.pyplot as plt
 
 file = 'myStolenFiles/temperatures.csv'
 
@@ -15,3 +16,10 @@ normalized = (setOfFiles - setOfFiles.min()) / (setOfFiles.max() - setOfFiles.mi
 for n in range(setOfFiles.shape[1]):
     print(f"The mean of city{n+1} is {mean[n]:.2f}")
     print(f"The normalization of the city {n+1}: \n{normalized[:, n]}")
+
+plt.title("Temperatues")
+plt.plot(range(len(setOfFiles[:,0])), setOfFiles[:,0], label="City01", color="Red")
+plt.plot(range(len(setOfFiles[:,1])), setOfFiles[:,1], label="City02", color="blue")
+plt.plot(range(len(setOfFiles[:,2])), setOfFiles[:,2], label="City03", color="green")
+plt.legend()
+plt.show()
